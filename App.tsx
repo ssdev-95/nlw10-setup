@@ -1,9 +1,5 @@
-import {
-	Text,
-	View,
-	StatusBar,
-	StyleSheet
-} from 'react-native'
+import { StatusBar } from 'react-native'
+import { Home } from './src/screens/home'
 
 import {
   useFonts,
@@ -25,28 +21,13 @@ export default function App() {
 	}
 	
 	return (
-    <View style={styles.container}>
-      <Text style={styles.text}>
-			  Hello nlw.
-			</Text>
+    <>
+      <Home />
       <StatusBar
 			  barStyle="light-content"
 				backgroundColor="transparent"
 				translucent
 			/>
-    </View>
+    </>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#09090A',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-	text: {
-	  color: '#f0f2f5',
-		fontSize: 24
-	}
-})

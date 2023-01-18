@@ -1,4 +1,5 @@
 import { View, ActivityIndicator } from 'react-native'
+import colors from 'tailwindcss/colors'
 
 export function Loading () {
 	return (
@@ -9,7 +10,7 @@ export function Loading () {
 			justifyContent: 'center'
 		}}>
 		  <ActivityIndicator
-			  color="#f0f2f5"
+			  color={colors.violet[500]}
 				size="large"
 			/>
 		</View>
