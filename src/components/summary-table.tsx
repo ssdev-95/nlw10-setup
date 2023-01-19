@@ -1,5 +1,5 @@
+import dayjs from 'dayjs'
 import { HabitDay } from './habit-day'
-
 import { generateDaysRange } from "../utils/generate-dates-from-year-begining"
 
 const weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
@@ -10,6 +10,7 @@ const amountDaysToFill = minimumDaysToFill - summaryDates.length
 const daysToFill = Array.from({ length: amountDaysToFill }).fill('empty')
 
 export function SummaryTable() {
+  const today = dayjs(new Date()).startOf('day')
   return (
 	  <div className="w-full flex gap-3">
 		  <div className="grid grid-rows-7 grid-flow-row gap-3">
@@ -29,6 +30,7 @@ export function SummaryTable() {
 					  key={date.toString()}
 						amount={8}
 						completed={Math.round(Math.random()*8)}
+						active={dayjs(date).isSame(today)}
 					/>
 				))}
 

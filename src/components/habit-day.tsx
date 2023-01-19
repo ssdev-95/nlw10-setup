@@ -6,6 +6,7 @@ import { HabitProgressbar } from './habit-progressbar'
 interface HabitProps {
   amount:number
 	completed:number
+	active: boolean
 }
 
 export function HabitDay(props:HabitProps) {
@@ -16,9 +17,13 @@ export function HabitDay(props:HabitProps) {
   	  <Popover.Trigger
 	  		className={clsx('w-10 h-10 border-2 rounded-lg', {
 				  'border-zinc-800 bg-zinc-900': progressPercentage === 0,
-					'border-violet-800 bg-violet-900': progressPercentage > 0 && progressPercentage <= 25,
-					'border-violet-600 bg-violet-800': progressPercentage > 25 && progressPercentage <= 50,
-					'border-violet-500 bg-violet-700': progressPercentage > 50
+					'border-violet-800 bg-violet-900': progressPercentage > 0 && progressPercentage <= 16,
+					'border-violet-700 bg-violet-900': progressPercentage > 16 && progressPercentage <= 32,
+					'border-violet-600 bg-violet-800': progressPercentage > 32 && progressPercentage <= 48,
+					'border-violet-500 bg-violet-700': progressPercentage > 48 && progressPercentage <= 64,
+					'border-violet-400 bg-violet-600': progressPercentage > 64 && progressPercentage <= 80,
+					'border-violet-300 bg-violet-500': progressPercentage > 80,
+					'border-4 border-zinc-200': props.active
 				})}
   		/>
 
