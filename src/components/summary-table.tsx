@@ -1,4 +1,5 @@
 import { View, Text, ScrollView } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
 import { DayHabit, DAY_SIZE } from './day-habit'
 
@@ -15,7 +16,9 @@ const daysToFill = Array
 	.fill('empty')
 
 export function SummaryTable() {
-  return (
+  const { navigate } = useNavigation()
+
+	return (
 	<>
 		<View className="w-full flex-row mt-6 mb-2 items-center">
 		  {weekDays.map((day,idx) => (
@@ -37,7 +40,12 @@ export function SummaryTable() {
 				className="flex-row flex-wrap items-center"
 			>
 			  {habitsDaysFromYearStart.map((day) => (
-			    <DayHabit key={day.toString()} />
+			    <DayHabit
+					  key={day.toString()}
+						onPress={() => navigate('habit', {
+						  date: day.toISOString()
+						})}
+					/>
 				))}
 
 				{amountDaysToFill && daysToFill.map((day,idx) => (
