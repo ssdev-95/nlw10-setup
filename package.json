@@ -1,31 +1,20 @@
 {
    "name": "dev_habits",
-   "version": "0.1.0",
+   "version": "0.1.1",
    "description": "",
    "main": "index.js",
    "scripts": {
-      "dev": "tsx watch src/index",
-      "start": "ts-node src/index.ts",
-      "seed": "tsx ./src/infra/typeorm/seed.ts",
-      "typeorm": "typeorm-ts-node-commonjs",
-      "migration:create": "typeorm-ts-node-commonjs migration:generate -d ./src/infra/typeorm/data-source.ts",
-      "migration:run": "typeorm-ts-node-commonjs migration:run -d ./src/infra/typeorm/data-source.ts"
+      "dev": "tsx watch src/index"
    },
    "license": "MIT",
    "dependencies": {
       "@fastify/cors": "^8.2.0",
-      "better-sqlite3": "^8.0.1",
-      "dayjs": "^1.11.7",
       "dotenv": "^16.0.3",
       "fastify": "^4.11.0",
-      "fastify-typeorm-plugin": "^2.2.1",
-      "reflect-metadata": "^0.1.13",
-      "typeorm": "0.3.11",
       "zod": "^3.20.2"
    },
    "devDependencies": {
       "@types/node": "^16.11.10",
-      "ts-node": "10.7.0",
       "tsx": "^3.12.2",
       "typescript": "4.5.2"
    }
