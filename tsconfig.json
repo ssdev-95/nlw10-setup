@@ -2,19 +2,23 @@
    "compilerOptions": {
       "lib": [
          "es5",
-         "es6"
+         "es6",
+				 "esnext"
       ],
-      "target": "es2021",
-      "module": "commonjs",
+      "target": "es2020",
+      "module": ["commonjs", "es2020"],
       "moduleResolution": "node",
-			"rootDir": "./",
       "outDir": "./build",
-			"paths": {
-				"@application/*": ["src/application/*"],
-				"@infra/*": ["src/infra/*"]
-			},
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
-      "sourceMap": true
+      "sourceMap": true,
+			"resolveJsonModule": true,
+			"strict": true,
+			"strictNullChecks": true,
+			"strictPropertyInitialization": false,
+			"paths": {
+				"@application/*": ["./src/application/*"],
+				"@infra/*": ["./src/infra/*"]
+			}
    }
 }

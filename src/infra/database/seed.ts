@@ -5,12 +5,14 @@ async function runSeeds() {
   const service = new TypeormService()
   await service.getEntityManager().clear(Habit)
 
-  const habit1 = service.getEntityManager().create(Habit, {
-    title: 'Comer salada',
-    createdAt: new Date()
-  })
+  const habit1 = service
+	  .getEntityManager()
+		.create(Habit, {
+			title: 'Comer salada',
+			createdAt: new Date()
+		})
 
-  console.log(habit1.id)
+		console.log(habit1)
 }
 
 runSeeds()
