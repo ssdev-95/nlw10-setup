@@ -1,10 +1,6 @@
 .idea/
 .vscode/
 node_modules/
-dist/
 build/
 tmp/
 temp/
-src/infra/typeorm/db/db.sqlite*
-.env
-.env.local
