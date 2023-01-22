@@ -26,14 +26,18 @@ DayHabit.init({
 	},
 	dayId: {
 		type: DataTypes.STRING,
-		unique: true
+		allowNull: false
 	},
 	habitId: {
 		type: DataTypes.STRING,
-		unique: true
+		allowNull: false
 	}
 }, {
 	sequelize,
 	tableName: 'day_habits',
-	modelName: 'dayHabit'
+	modelName: 'dayHabit',
+	indexes: [{
+		unique: true,
+		fields: ['dayId', 'habitId']
+	}]
 })

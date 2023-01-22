@@ -25,7 +25,7 @@ Day.init({
 	},
 	date: {
 		type: DataTypes.DATE,
-		unique: true
+		allowNull: false
 	}
 }, {
 	sequelize,

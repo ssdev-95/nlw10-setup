@@ -26,14 +26,18 @@ HabitWeekDays.init({
 	},
 	habitId: {
 		type: DataTypes.STRING,
-		unique: true
+		allowNull: false
 	},
 	weekDay: {
 		type: DataTypes.INTEGER,
-		unique: true
+		allowNull: false
 	}
 }, {
 	sequelize,
 	tableName: 'habit_week_days',
-	modelName: 'habitWeekDays'
+	modelName: 'habitWeekDays',
+	indexes: [{
+		unique: true,
+		fields: ['weekDay', 'habitId']
+	}]
 })

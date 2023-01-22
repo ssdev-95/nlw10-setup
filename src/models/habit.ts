@@ -5,14 +5,19 @@ import {
 } from 'sequelize'
 
 import { sequelize } from '../database.connect'
-import { HabitType } from './models.d'
+import { HabitType as BaseHabit } from './models.d'
 
-type HCreationalType = Optional<HabitType,'id'>
+interface HabitType  extends BaseHabit {
+	createdAt: Date
+}
+
+type HCreationalType = Optional<HabitType,'id'|'createdAt'>
 
 export class Habit
 extends Model<HabitType, HCreationalType> {
 	declare id: string
 	declare title: string
+	declare createdAt: Date
 }
 
 sequelize.modelManager.addModel(Habit)
@@ -23,7 +28,11 @@ Habit.init({
 		primaryKey: true,
 		defaultValue: DataTypes.UUIDV4
 	},
-	title: DataTypes.STRING
+	title: {
+		type: DataTypes.STRING,
+		allowNull: false
+	},
+	createdAt: DataTypes.DATE
 }, {
 	sequelize,
 	tableName: 'habits',
