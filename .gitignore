@@ -1,7 +1,7 @@
 .idea/
 .vscode/
 node_modules/
-build/
+dist/
 tmp/
 temp/
-src/infra/database/db.sqlite*
+src/**/db.sqlite*
