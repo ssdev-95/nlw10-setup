@@ -1,4 +1,4 @@
-# DevHabit - Habits management made easy.($branch)
+# DevHabit - Habits management made easy.
 <br />
 <br />
 <p align="center">
