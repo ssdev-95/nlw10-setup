@@ -4,7 +4,7 @@ import {
 	DataTypes
 } from 'sequelize'
 
-import { sequelize } from '../database.connect'
+import { sequelize } from '../../lib/sequelize'
 import { DayType } from './models.d'
 
 type DCreationalType = Optional<DayType,'id'>

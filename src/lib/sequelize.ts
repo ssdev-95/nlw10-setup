@@ -3,7 +3,7 @@ import { Sequelize } from 'sequelize'
 
 const dbPath = path.resolve(
 	process.cwd(),
-	'src/db.sqlite'
+	'src/database/db.sqlite'
 )
 
 const sequelize = new Sequelize({

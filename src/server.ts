@@ -1,13 +1,15 @@
 import fastify from 'fastify'
+import cors from '@fastify/cors'
+
 import { AppRoutes } from './routes'
-import { dbConnect } from './database.connect'
+import { dbConnect } from './lib/sequelize'
 
 async function bootstrap() {
 	const app = fastify()
 	
 	app.register(AppRoutes)
+	app.register(cors)
 	app.register(dbConnect)
-	//await dbConnect()
 
 	app.listen(
 		{ port:2077 },

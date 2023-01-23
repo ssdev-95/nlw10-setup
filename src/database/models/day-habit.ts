@@ -4,7 +4,7 @@ import {
 	DataTypes
 } from 'sequelize'
 
-import { sequelize } from '../database.connect'
+import { sequelize } from '../../lib/sequelize'
 import { DayHabitType } from './models.d'
 
 type DHCreationalType = Optional<DayHabitType,'id'>

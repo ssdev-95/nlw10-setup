@@ -3,9 +3,9 @@ import { Habit } from './habit'
 import { DayHabit } from './day-habit'
 import { HabitWeekDays } from './habit-week-days'
 
-Day.hasMany(DayHabit)
-Habit.hasMany(DayHabit)
-Habit.hasMany(HabitWeekDays)
+Day.hasMany(DayHabit, { as: 'dayHabits' })
+Habit.hasMany(DayHabit, { as: 'dayHabits' })
+Habit.hasMany(HabitWeekDays, { as: 'weekDays' })
 
 DayHabit.belongsTo(Day, {
 	targetKey: 'id',

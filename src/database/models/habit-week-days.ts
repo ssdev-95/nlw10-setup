@@ -4,7 +4,7 @@ import {
 	DataTypes
 } from 'sequelize'
 
-import { sequelize } from '../database.connect'
+import { sequelize } from '../../lib/sequelize'
 import { HabitWeekDaysType } from './models.d'
 
 type HWDCreationalType = Optional<HabitWeekDaysType,'id'>

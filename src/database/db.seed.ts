@@ -1,7 +1,7 @@
 import './models/associations'
 import dayjs from 'dayjs'
 
-import { sequelize } from './database.connect'
+import { sequelize } from '../lib/sequelize'
 
 import { Day } from './models/day'
 import { Habit } from './models/habit'
@@ -39,7 +39,7 @@ async function dbSeed() {
 	const habitDays = HabitWeekDays
 	  .bulkCreate(habitSeedDefaults.map(habit => {
 			return {
-				weekDay: Math.round(Math.random()*6),
+				weekDay: dayjs(habit.createdAt).get('day'),
 				habitId: habit.id
 			}
 		}))
@@ -48,7 +48,6 @@ async function dbSeed() {
 
 	const day = await Day.create({
 		date: dayjs(firstHabit.createdAt)
-		  .add(3)
 			.startOf('day')
 			.toDate()
 	})
@@ -62,9 +61,7 @@ async function dbSeed() {
 		habitDays,
 		dayHabit,
 		habits
-	])
-
-	console.info('[SEED] Done.')
+	]).finally(() => console.info('[SEED] Done.'))
 }
 
 dbSeed()

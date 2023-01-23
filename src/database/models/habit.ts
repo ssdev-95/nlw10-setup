@@ -4,7 +4,7 @@ import {
 	DataTypes
 } from 'sequelize'
 
-import { sequelize } from '../database.connect'
+import { sequelize } from '../../lib/sequelize'
 import { HabitType as BaseHabit } from './models.d'
 
 interface HabitType  extends BaseHabit {
@@ -36,5 +36,9 @@ Habit.init({
 }, {
 	sequelize,
 	tableName: 'habits',
-	modelName: 'habit'
+	modelName: 'habit',
+	indexes: [{
+		unique: true,
+		fields: ['title','createdAt']
+	}]
 })
