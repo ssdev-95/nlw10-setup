@@ -45,5 +45,9 @@
 * Clone this repo
 * Setup environment according to the readme file on each branch.
 
+## Roadmap
+
+- [ ] Integration of all branches. (web, api and mobile)
+
 > Made with ♥ using Termux and Neovim.<br/>
 > xSallus 2023
