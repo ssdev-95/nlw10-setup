@@ -30,5 +30,9 @@ Day.init({
 }, {
 	sequelize,
 	tableName: 'days',
-	modelName: 'day'
+	modelName: 'day',
+	indexes: [{
+		unique: true,
+		fields: ['date']
+	}]
 })
