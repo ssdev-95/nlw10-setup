@@ -1,15 +1,13 @@
 import { FastifyRequest as Request } from 'fastify'
+import dayjs from 'dayjs'
+
 import { z } from 'zod'
 import { Op } from 'sequelize'
-import dayjs from 'dayjs'
 
 import { Day } from '../database/models/day'
 import { Habit } from '../database/models/habit'
 import { DayHabit } from '../database/models/day-habit'
-
-import {
-	HabitWeekDays
-} from '../database/models/habit-week-days'
+import { HabitWeekDays } from '../database/models/habit-week-days'
 
 async function getDaysByDateController(req:Request) {
 	const getDaysBody = z.object({
@@ -23,7 +21,6 @@ async function getDaysByDateController(req:Request) {
 		const weekDay = parsedDate.get('day')
 		
 		const habits = await Habit.findAll({
-			attributes: ['id', 'title', 'createdAt'],
 			where: {
 				createdAt: {
 					[Op.lte]: date,
@@ -32,30 +29,34 @@ async function getDaysByDateController(req:Request) {
 			include: [{
 				model: HabitWeekDays,
 				as: 'weekDays',
-				where: { weekDay: { [Op.eq]: weekDay } }
-			}]
-		})
-
-		const day = await Day.findOne({
-			where: {
-				date: parsedDate.toDate()
-			},
-			include: [{
+				where: { weekDay }
+			}, {
 				model: DayHabit,
-				as: 'dayHabits',
-				attributes: ['id']
+				as: 'dayHabits'
 			}]
 		})
-
-		const availableHabits = habits
-		  .map(({ id, title, createdAt }) => {
-				return { id, title, createdAt }
+		
+		const day = await Day
+		  .findOne({
+				where: { 
+					date: parsedDate.startOf('day').toDate()
+				},
+				include: [{
+					model: DayHabit,
+					as: 'dayHabits',
+					attributes: ['id']
+				}]
 			})
 
-		return {
-			availableHabits,
-			day
-		}
+	 const availableHabits = habits?.map(habit => ({
+		 id: habit.id,
+		 title: habit.title,
+		 createdAt: habit.createdAt
+	 }))
+
+	 const completedHabits = !!day ? day.dayHabits : []
+	
+		return { availableHabits, completedHabits }
 	} catch (error) {
 		throw error
 	}

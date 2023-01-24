@@ -5,6 +5,7 @@ import {
 } from 'sequelize'
 
 import { sequelize } from '../../lib/sequelize'
+import { DayHabit } from './day-habit'
 import { HabitType as BaseHabit } from './models.d'
 
 interface HabitType  extends BaseHabit {
@@ -18,6 +19,8 @@ extends Model<HabitType, HCreationalType> {
 	declare id: string
 	declare title: string
 	declare createdAt: Date
+
+	declare dayHabits: DayHabit[]
 }
 
 sequelize.modelManager.addModel(Habit)
